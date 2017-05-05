@@ -1,0 +1,76 @@
+﻿@model TexcelASPNETbyEddy.tblSE
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>tblSE</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomSE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomSE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomSE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.editionSE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.editionSE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.editionSE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.versionSE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.versionSE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.versionSE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            Html.LabelFor(model => model.tagSE, htmlAttributes: new { class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Html.EditorFor(model => model.tagSE, new { htmlAttributes = new { class = "form-control" } })
+                Html.ValidationMessageFor(model => model.tagSE, "", new { class = "text-danger" })
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+        @if (ViewBag.ErreurSE == true)
+        {
+            <div class="form-group">
+                <p style= "color:red;" class="col-md-offset-2 col-md-10"> @ViewBag.Message </p>
+            </div>
+
+            ViewBag.ErreurSE = false;
+        }
+        
+    </div>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

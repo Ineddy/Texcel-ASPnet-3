@@ -1,0 +1,1392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BdTexcel_Eddy_FranckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAdministrateur">
+          <Key>
+            <PropertyRef Name="idAdministrateur" />
+          </Key>
+          <Property Name="idAdministrateur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCategorie">
+          <Key>
+            <PropertyRef Name="idCategorie" />
+          </Key>
+          <Property Name="idCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionCategorie" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCategorieEmploi">
+          <Key>
+            <PropertyRef Name="idCategorieEmploi" />
+          </Key>
+          <Property Name="idCategorieEmploi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionCategorieEmploi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCategorieEmploiEmploye">
+          <Key>
+            <PropertyRef Name="idEmploye" />
+            <PropertyRef Name="idCategorieEmploi" />
+          </Key>
+          <Property Name="idEmploye" Type="int" Nullable="false" />
+          <Property Name="idCategorieEmploi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClassification">
+          <Key>
+            <PropertyRef Name="idClassification" />
+          </Key>
+          <Property Name="idClassification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionClassification" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClassificationJeu">
+          <Key>
+            <PropertyRef Name="idClassification" />
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idClassification" Type="int" Nullable="false" />
+          <Property Name="idJeu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDirecteur">
+          <Key>
+            <PropertyRef Name="idDirecteur" />
+          </Key>
+          <Property Name="idDirecteur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="idEmploye" />
+          </Key>
+          <Property Name="idEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomEmploye" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenomEmploye" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateDeNaissanceEmploye" Type="date" Nullable="false" />
+          <Property Name="adresseligne1Employe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresseligne2Employe" Type="varchar" MaxLength="50" />
+          <Property Name="codePostalEmploye" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="telephoneResidenceEmploye" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="posteTelephoniqueEmploye" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="matriculeEmploye" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="idVille" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEquipe">
+          <Key>
+            <PropertyRef Name="idEquipe" />
+          </Key>
+          <Property Name="idEquipe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomEquipe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idChefEquipe" Type="int" Nullable="false" />
+          <Property Name="idDirecteur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEquipeEmploye">
+          <Key>
+            <PropertyRef Name="idEmploye" />
+            <PropertyRef Name="idEquipe" />
+          </Key>
+          <Property Name="idEmploye" Type="int" Nullable="false" />
+          <Property Name="idEquipe" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGenre">
+          <Key>
+            <PropertyRef Name="idGenre" />
+          </Key>
+          <Property Name="idGenre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionGenre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGenreJeu">
+          <Key>
+            <PropertyRef Name="idGenre" />
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idGenre" Type="int" Nullable="false" />
+          <Property Name="idJeu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGerant">
+          <Key>
+            <PropertyRef Name="idGerant" />
+          </Key>
+          <Property Name="idGerant" Type="int" Nullable="false" />
+          <Property Name="loginGerant" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="motDePasseGerant" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleGerant" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblJeu">
+          <Key>
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idJeu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomJeu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="devellopeurJeu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descriptionJeu" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="configurationMinimaleJeu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idProjetTest" Type="int" />
+          <Property Name="tag" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="tblPlateforme">
+          <Key>
+            <PropertyRef Name="idPlateforme" />
+          </Key>
+          <Property Name="idPlateforme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomPlateforme" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="configurationPlateforme" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idTypePlateforme" Type="int" Nullable="false" />
+          <Property Name="codeSE" Type="int" Nullable="false" />
+          <Property Name="tagPlateforme" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="tblPlateformeJeu">
+          <Key>
+            <PropertyRef Name="idPlateforme" />
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idPlateforme" Type="int" Nullable="false" />
+          <Property Name="idJeu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProjetTest">
+          <Key>
+            <PropertyRef Name="idProjetTest" />
+          </Key>
+          <Property Name="idProjetTest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomProjetTest" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateCreationProjetTest" Type="date" />
+        </EntityType>
+        <EntityType Name="tblSE">
+          <Key>
+            <PropertyRef Name="codeSE" />
+          </Key>
+          <Property Name="codeSE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomSE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="editionSE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="versionSE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tagSE" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="tblTest">
+          <Key>
+            <PropertyRef Name="idTest" />
+          </Key>
+          <Property Name="idTest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionTest" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idCategorie" Type="int" Nullable="false" />
+          <Property Name="idEquipe" Type="int" Nullable="false" />
+          <Property Name="idProjetTest" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTheme">
+          <Key>
+            <PropertyRef Name="idTheme" />
+          </Key>
+          <Property Name="idTheme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptionTheme" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblThemeJeu">
+          <Key>
+            <PropertyRef Name="idTheme" />
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idTheme" Type="int" Nullable="false" />
+          <Property Name="idJeu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTypePlateforme">
+          <Key>
+            <PropertyRef Name="idTypePlateforme" />
+          </Key>
+          <Property Name="idTypePlateforme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomTypePlateforme" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVille">
+          <Key>
+            <PropertyRef Name="idVille" />
+          </Key>
+          <Property Name="idVille" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomVille" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_AdministrateurGerant">
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="1" />
+          <End Role="tblAdministrateur" Type="Self.tblAdministrateur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Principal>
+            <Dependent Role="tblAdministrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CategorieEmploiEmploye">
+          <End Role="tblCategorieEmploi" Type="Self.tblCategorieEmploi" Multiplicity="1" />
+          <End Role="tblCategorieEmploiEmploye" Type="Self.tblCategorieEmploiEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorieEmploi">
+              <PropertyRef Name="idCategorieEmploi" />
+            </Principal>
+            <Dependent Role="tblCategorieEmploiEmploye">
+              <PropertyRef Name="idCategorieEmploi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CategorieTest">
+          <End Role="tblCategorie" Type="Self.tblCategorie" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorie">
+              <PropertyRef Name="idCategorie" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Classification">
+          <End Role="tblClassification" Type="Self.tblClassification" Multiplicity="1" />
+          <End Role="tblClassificationJeu" Type="Self.tblClassificationJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassification">
+              <PropertyRef Name="idClassification" />
+            </Principal>
+            <Dependent Role="tblClassificationJeu">
+              <PropertyRef Name="idClassification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CodeSE">
+          <End Role="tblSE" Type="Self.tblSE" Multiplicity="1" />
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSE">
+              <PropertyRef Name="codeSE" />
+            </Principal>
+            <Dependent Role="tblPlateforme">
+              <PropertyRef Name="codeSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Directeur">
+          <End Role="tblDirecteur" Type="Self.tblDirecteur" Multiplicity="1" />
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDirecteur">
+              <PropertyRef Name="idDirecteur" />
+            </Principal>
+            <Dependent Role="tblEquipe">
+              <PropertyRef Name="idDirecteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DirecteurGerant">
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="1" />
+          <End Role="tblDirecteur" Type="Self.tblDirecteur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Principal>
+            <Dependent Role="tblDirecteur">
+              <PropertyRef Name="idDirecteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EmployeCategorieEmploi">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblCategorieEmploiEmploye" Type="Self.tblCategorieEmploiEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Principal>
+            <Dependent Role="tblCategorieEmploiEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EmployeEquipe">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEquipeEmploye" Type="Self.tblEquipeEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Principal>
+            <Dependent Role="tblEquipeEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Equipe">
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEquipe">
+              <PropertyRef Name="idEquipe" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idEquipe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EquipeEmploye">
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="1" />
+          <End Role="tblEquipeEmploye" Type="Self.tblEquipeEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEquipe">
+              <PropertyRef Name="idEquipe" />
+            </Principal>
+            <Dependent Role="tblEquipeEmploye">
+              <PropertyRef Name="idEquipe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GenreJeu">
+          <End Role="tblGenre" Type="Self.tblGenre" Multiplicity="1" />
+          <End Role="tblGenreJeu" Type="Self.tblGenreJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenre">
+              <PropertyRef Name="idGenre" />
+            </Principal>
+            <Dependent Role="tblGenreJeu">
+              <PropertyRef Name="idGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GerantEmploye">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Principal>
+            <Dependent Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuClassification">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="1" />
+          <End Role="tblClassificationJeu" Type="Self.tblClassificationJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJeu">
+              <PropertyRef Name="idJeu" />
+            </Principal>
+            <Dependent Role="tblClassificationJeu">
+              <PropertyRef Name="idJeu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuGenre">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="1" />
+          <End Role="tblGenreJeu" Type="Self.tblGenreJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJeu">
+              <PropertyRef Name="idJeu" />
+            </Principal>
+            <Dependent Role="tblGenreJeu">
+              <PropertyRef Name="idJeu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuPlateforme">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="1" />
+          <End Role="tblPlateformeJeu" Type="Self.tblPlateformeJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJeu">
+              <PropertyRef Name="idJeu" />
+            </Principal>
+            <Dependent Role="tblPlateformeJeu">
+              <PropertyRef Name="idJeu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuProjetTest">
+          <End Role="tblProjetTest" Type="Self.tblProjetTest" Multiplicity="0..1" />
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjetTest">
+              <PropertyRef Name="idProjetTest" />
+            </Principal>
+            <Dependent Role="tblJeu">
+              <PropertyRef Name="idProjetTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuTheme">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="1" />
+          <End Role="tblThemeJeu" Type="Self.tblThemeJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJeu">
+              <PropertyRef Name="idJeu" />
+            </Principal>
+            <Dependent Role="tblThemeJeu">
+              <PropertyRef Name="idJeu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Plateforme">
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="1" />
+          <End Role="tblPlateformeJeu" Type="Self.tblPlateformeJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPlateforme">
+              <PropertyRef Name="idPlateforme" />
+            </Principal>
+            <Dependent Role="tblPlateformeJeu">
+              <PropertyRef Name="idPlateforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TestProjetTest">
+          <End Role="tblProjetTest" Type="Self.tblProjetTest" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjetTest">
+              <PropertyRef Name="idProjetTest" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idProjetTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Theme">
+          <End Role="tblTheme" Type="Self.tblTheme" Multiplicity="1" />
+          <End Role="tblThemeJeu" Type="Self.tblThemeJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTheme">
+              <PropertyRef Name="idTheme" />
+            </Principal>
+            <Dependent Role="tblThemeJeu">
+              <PropertyRef Name="idTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TypePlateforme">
+          <End Role="tblTypePlateforme" Type="Self.tblTypePlateforme" Multiplicity="1" />
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypePlateforme">
+              <PropertyRef Name="idTypePlateforme" />
+            </Principal>
+            <Dependent Role="tblPlateforme">
+              <PropertyRef Name="idTypePlateforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ville">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="1" />
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="idVille" />
+            </Principal>
+            <Dependent Role="tblEmploye">
+              <PropertyRef Name="idVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BdTexcel_Eddy_FranckModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdministrateur" EntityType="Self.tblAdministrateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorie" EntityType="Self.tblCategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorieEmploi" EntityType="Self.tblCategorieEmploi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorieEmploiEmploye" EntityType="Self.tblCategorieEmploiEmploye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClassification" EntityType="Self.tblClassification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClassificationJeu" EntityType="Self.tblClassificationJeu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDirecteur" EntityType="Self.tblDirecteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEquipe" EntityType="Self.tblEquipe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEquipeEmploye" EntityType="Self.tblEquipeEmploye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGenre" EntityType="Self.tblGenre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGenreJeu" EntityType="Self.tblGenreJeu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGerant" EntityType="Self.tblGerant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblJeu" EntityType="Self.tblJeu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPlateforme" EntityType="Self.tblPlateforme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPlateformeJeu" EntityType="Self.tblPlateformeJeu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProjetTest" EntityType="Self.tblProjetTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSE" EntityType="Self.tblSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTest" EntityType="Self.tblTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTheme" EntityType="Self.tblTheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblThemeJeu" EntityType="Self.tblThemeJeu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTypePlateforme" EntityType="Self.tblTypePlateforme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVille" EntityType="Self.tblVille" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_AdministrateurGerant" Association="Self.fk_AdministrateurGerant">
+            <End Role="tblGerant" EntitySet="tblGerant" />
+            <End Role="tblAdministrateur" EntitySet="tblAdministrateur" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CategorieEmploiEmploye" Association="Self.fk_CategorieEmploiEmploye">
+            <End Role="tblCategorieEmploi" EntitySet="tblCategorieEmploi" />
+            <End Role="tblCategorieEmploiEmploye" EntitySet="tblCategorieEmploiEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CategorieTest" Association="Self.fk_CategorieTest">
+            <End Role="tblCategorie" EntitySet="tblCategorie" />
+            <End Role="tblTest" EntitySet="tblTest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Classification" Association="Self.fk_Classification">
+            <End Role="tblClassification" EntitySet="tblClassification" />
+            <End Role="tblClassificationJeu" EntitySet="tblClassificationJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodeSE" Association="Self.fk_CodeSE">
+            <End Role="tblSE" EntitySet="tblSE" />
+            <End Role="tblPlateforme" EntitySet="tblPlateforme" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Directeur" Association="Self.fk_Directeur">
+            <End Role="tblDirecteur" EntitySet="tblDirecteur" />
+            <End Role="tblEquipe" EntitySet="tblEquipe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DirecteurGerant" Association="Self.fk_DirecteurGerant">
+            <End Role="tblGerant" EntitySet="tblGerant" />
+            <End Role="tblDirecteur" EntitySet="tblDirecteur" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EmployeCategorieEmploi" Association="Self.fk_EmployeCategorieEmploi">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblCategorieEmploiEmploye" EntitySet="tblCategorieEmploiEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EmployeEquipe" Association="Self.fk_EmployeEquipe">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEquipeEmploye" EntitySet="tblEquipeEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Equipe" Association="Self.fk_Equipe">
+            <End Role="tblEquipe" EntitySet="tblEquipe" />
+            <End Role="tblTest" EntitySet="tblTest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EquipeEmploye" Association="Self.fk_EquipeEmploye">
+            <End Role="tblEquipe" EntitySet="tblEquipe" />
+            <End Role="tblEquipeEmploye" EntitySet="tblEquipeEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GenreJeu" Association="Self.fk_GenreJeu">
+            <End Role="tblGenre" EntitySet="tblGenre" />
+            <End Role="tblGenreJeu" EntitySet="tblGenreJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GerantEmploye" Association="Self.fk_GerantEmploye">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblGerant" EntitySet="tblGerant" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuClassification" Association="Self.fk_JeuClassification">
+            <End Role="tblJeu" EntitySet="tblJeu" />
+            <End Role="tblClassificationJeu" EntitySet="tblClassificationJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuGenre" Association="Self.fk_JeuGenre">
+            <End Role="tblJeu" EntitySet="tblJeu" />
+            <End Role="tblGenreJeu" EntitySet="tblGenreJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuPlateforme" Association="Self.fk_JeuPlateforme">
+            <End Role="tblJeu" EntitySet="tblJeu" />
+            <End Role="tblPlateformeJeu" EntitySet="tblPlateformeJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuProjetTest" Association="Self.fk_JeuProjetTest">
+            <End Role="tblProjetTest" EntitySet="tblProjetTest" />
+            <End Role="tblJeu" EntitySet="tblJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuTheme" Association="Self.fk_JeuTheme">
+            <End Role="tblJeu" EntitySet="tblJeu" />
+            <End Role="tblThemeJeu" EntitySet="tblThemeJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Plateforme" Association="Self.fk_Plateforme">
+            <End Role="tblPlateforme" EntitySet="tblPlateforme" />
+            <End Role="tblPlateformeJeu" EntitySet="tblPlateformeJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TestProjetTest" Association="Self.fk_TestProjetTest">
+            <End Role="tblProjetTest" EntitySet="tblProjetTest" />
+            <End Role="tblTest" EntitySet="tblTest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Theme" Association="Self.fk_Theme">
+            <End Role="tblTheme" EntitySet="tblTheme" />
+            <End Role="tblThemeJeu" EntitySet="tblThemeJeu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TypePlateforme" Association="Self.fk_TypePlateforme">
+            <End Role="tblTypePlateforme" EntitySet="tblTypePlateforme" />
+            <End Role="tblPlateforme" EntitySet="tblPlateforme" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ville" Association="Self.fk_Ville">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BdTexcel_Eddy_FranckModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAdministrateur">
+          <Key>
+            <PropertyRef Name="idAdministrateur" />
+          </Key>
+          <Property Name="idAdministrateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblGerant" Relationship="Self.fk_AdministrateurGerant" FromRole="tblAdministrateur" ToRole="tblGerant" />
+        </EntityType>
+        <EntityType Name="tblCategorie">
+          <Key>
+            <PropertyRef Name="idCategorie" />
+          </Key>
+          <Property Name="idCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionCategorie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTests" Relationship="Self.fk_CategorieTest" FromRole="tblCategorie" ToRole="tblTest" />
+        </EntityType>
+        <EntityType Name="tblCategorieEmploi">
+          <Key>
+            <PropertyRef Name="idCategorieEmploi" />
+          </Key>
+          <Property Name="idCategorieEmploi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionCategorieEmploi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEmployes" Relationship="Self.tblCategorieEmploiEmploye" FromRole="tblCategorieEmploi" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblClassification">
+          <Key>
+            <PropertyRef Name="idClassification" />
+          </Key>
+          <Property Name="idClassification" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionClassification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblJeus" Relationship="Self.tblClassificationJeu" FromRole="tblClassification" ToRole="tblJeu" />
+        </EntityType>
+        <EntityType Name="tblDirecteur">
+          <Key>
+            <PropertyRef Name="idDirecteur" />
+          </Key>
+          <Property Name="idDirecteur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEquipes" Relationship="Self.fk_Directeur" FromRole="tblDirecteur" ToRole="tblEquipe" />
+          <NavigationProperty Name="tblGerant" Relationship="Self.fk_DirecteurGerant" FromRole="tblDirecteur" ToRole="tblGerant" />
+        </EntityType>
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="idEmploye" />
+          </Key>
+          <Property Name="idEmploye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomEmploye" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenomEmploye" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateDeNaissanceEmploye" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="adresseligne1Employe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresseligne2Employe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codePostalEmploye" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="telephoneResidenceEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="posteTelephoniqueEmploye" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matriculeEmploye" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idVille" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblGerant" Relationship="Self.fk_GerantEmploye" FromRole="tblEmploye" ToRole="tblGerant" />
+          <NavigationProperty Name="tblVille" Relationship="Self.fk_Ville" FromRole="tblEmploye" ToRole="tblVille" />
+          <NavigationProperty Name="tblCategorieEmplois" Relationship="Self.tblCategorieEmploiEmploye" FromRole="tblEmploye" ToRole="tblCategorieEmploi" />
+          <NavigationProperty Name="tblEquipes" Relationship="Self.tblEquipeEmploye" FromRole="tblEmploye" ToRole="tblEquipe" />
+        </EntityType>
+        <EntityType Name="tblEquipe">
+          <Key>
+            <PropertyRef Name="idEquipe" />
+          </Key>
+          <Property Name="idEquipe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomEquipe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idChefEquipe" Type="Int32" Nullable="false" />
+          <Property Name="idDirecteur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblDirecteur" Relationship="Self.fk_Directeur" FromRole="tblEquipe" ToRole="tblDirecteur" />
+          <NavigationProperty Name="tblTests" Relationship="Self.fk_Equipe" FromRole="tblEquipe" ToRole="tblTest" />
+          <NavigationProperty Name="tblEmployes" Relationship="Self.tblEquipeEmploye" FromRole="tblEquipe" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblGenre">
+          <Key>
+            <PropertyRef Name="idGenre" />
+          </Key>
+          <Property Name="idGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblJeus" Relationship="Self.tblGenreJeu" FromRole="tblGenre" ToRole="tblJeu" />
+        </EntityType>
+        <EntityType Name="tblGerant">
+          <Key>
+            <PropertyRef Name="idGerant" />
+          </Key>
+          <Property Name="idGerant" Type="Int32" Nullable="false" />
+          <Property Name="loginGerant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="motDePasseGerant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roleGerant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAdministrateur" Relationship="Self.fk_AdministrateurGerant" FromRole="tblGerant" ToRole="tblAdministrateur" />
+          <NavigationProperty Name="tblDirecteur" Relationship="Self.fk_DirecteurGerant" FromRole="tblGerant" ToRole="tblDirecteur" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.fk_GerantEmploye" FromRole="tblGerant" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblJeu">
+          <Key>
+            <PropertyRef Name="idJeu" />
+          </Key>
+          <Property Name="idJeu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomJeu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="devellopeurJeu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descriptionJeu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="configurationMinimaleJeu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idProjetTest" Type="Int32" />
+          <Property Name="tag" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblProjetTest" Relationship="Self.fk_JeuProjetTest" FromRole="tblJeu" ToRole="tblProjetTest" />
+          <NavigationProperty Name="tblClassifications" Relationship="Self.tblClassificationJeu" FromRole="tblJeu" ToRole="tblClassification" />
+          <NavigationProperty Name="tblGenres" Relationship="Self.tblGenreJeu" FromRole="tblJeu" ToRole="tblGenre" />
+          <NavigationProperty Name="tblPlateformes" Relationship="Self.tblPlateformeJeu" FromRole="tblJeu" ToRole="tblPlateforme" />
+          <NavigationProperty Name="tblThemes" Relationship="Self.tblThemeJeu" FromRole="tblJeu" ToRole="tblTheme" />
+        </EntityType>
+        <EntityType Name="tblPlateforme">
+          <Key>
+            <PropertyRef Name="idPlateforme" />
+          </Key>
+          <Property Name="idPlateforme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomPlateforme" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="configurationPlateforme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idTypePlateforme" Type="Int32" Nullable="false" />
+          <Property Name="codeSE" Type="Int32" Nullable="false" />
+          <Property Name="tagPlateforme" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblSE" Relationship="Self.fk_CodeSE" FromRole="tblPlateforme" ToRole="tblSE" />
+          <NavigationProperty Name="tblTypePlateforme" Relationship="Self.fk_TypePlateforme" FromRole="tblPlateforme" ToRole="tblTypePlateforme" />
+          <NavigationProperty Name="tblJeus" Relationship="Self.tblPlateformeJeu" FromRole="tblPlateforme" ToRole="tblJeu" />
+        </EntityType>
+        <EntityType Name="tblProjetTest">
+          <Key>
+            <PropertyRef Name="idProjetTest" />
+          </Key>
+          <Property Name="idProjetTest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomProjetTest" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateCreationProjetTest" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblJeus" Relationship="Self.fk_JeuProjetTest" FromRole="tblProjetTest" ToRole="tblJeu" />
+          <NavigationProperty Name="tblTests" Relationship="Self.fk_TestProjetTest" FromRole="tblProjetTest" ToRole="tblTest" />
+        </EntityType>
+        <EntityType Name="tblSE">
+          <Key>
+            <PropertyRef Name="codeSE" />
+          </Key>
+          <Property Name="codeSE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomSE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="editionSE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="versionSE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tagSE" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblPlateformes" Relationship="Self.fk_CodeSE" FromRole="tblSE" ToRole="tblPlateforme" />
+        </EntityType>
+        <EntityType Name="tblTest">
+          <Key>
+            <PropertyRef Name="idTest" />
+          </Key>
+          <Property Name="idTest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionTest" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCategorie" Type="Int32" Nullable="false" />
+          <Property Name="idEquipe" Type="Int32" Nullable="false" />
+          <Property Name="idProjetTest" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCategorie" Relationship="Self.fk_CategorieTest" FromRole="tblTest" ToRole="tblCategorie" />
+          <NavigationProperty Name="tblEquipe" Relationship="Self.fk_Equipe" FromRole="tblTest" ToRole="tblEquipe" />
+          <NavigationProperty Name="tblProjetTest" Relationship="Self.fk_TestProjetTest" FromRole="tblTest" ToRole="tblProjetTest" />
+        </EntityType>
+        <EntityType Name="tblTheme">
+          <Key>
+            <PropertyRef Name="idTheme" />
+          </Key>
+          <Property Name="idTheme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptionTheme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblJeus" Relationship="Self.tblThemeJeu" FromRole="tblTheme" ToRole="tblJeu" />
+        </EntityType>
+        <EntityType Name="tblTypePlateforme">
+          <Key>
+            <PropertyRef Name="idTypePlateforme" />
+          </Key>
+          <Property Name="idTypePlateforme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomTypePlateforme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblPlateformes" Relationship="Self.fk_TypePlateforme" FromRole="tblTypePlateforme" ToRole="tblPlateforme" />
+        </EntityType>
+        <EntityType Name="tblVille">
+          <Key>
+            <PropertyRef Name="idVille" />
+          </Key>
+          <Property Name="idVille" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomVille" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEmployes" Relationship="Self.fk_Ville" FromRole="tblVille" ToRole="tblEmploye" />
+        </EntityType>
+        <Association Name="fk_AdministrateurGerant">
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="1" />
+          <End Role="tblAdministrateur" Type="Self.tblAdministrateur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Principal>
+            <Dependent Role="tblAdministrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CategorieTest">
+          <End Role="tblCategorie" Type="Self.tblCategorie" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorie">
+              <PropertyRef Name="idCategorie" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Directeur">
+          <End Role="tblDirecteur" Type="Self.tblDirecteur" Multiplicity="1" />
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDirecteur">
+              <PropertyRef Name="idDirecteur" />
+            </Principal>
+            <Dependent Role="tblEquipe">
+              <PropertyRef Name="idDirecteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DirecteurGerant">
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="1" />
+          <End Role="tblDirecteur" Type="Self.tblDirecteur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Principal>
+            <Dependent Role="tblDirecteur">
+              <PropertyRef Name="idDirecteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GerantEmploye">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblGerant" Type="Self.tblGerant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="idEmploye" />
+            </Principal>
+            <Dependent Role="tblGerant">
+              <PropertyRef Name="idGerant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ville">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="1" />
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="idVille" />
+            </Principal>
+            <Dependent Role="tblEmploye">
+              <PropertyRef Name="idVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Equipe">
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEquipe">
+              <PropertyRef Name="idEquipe" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idEquipe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_JeuProjetTest">
+          <End Role="tblProjetTest" Type="Self.tblProjetTest" Multiplicity="0..1" />
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjetTest">
+              <PropertyRef Name="idProjetTest" />
+            </Principal>
+            <Dependent Role="tblJeu">
+              <PropertyRef Name="idProjetTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CodeSE">
+          <End Role="tblSE" Type="Self.tblSE" Multiplicity="1" />
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSE">
+              <PropertyRef Name="codeSE" />
+            </Principal>
+            <Dependent Role="tblPlateforme">
+              <PropertyRef Name="codeSE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TypePlateforme">
+          <End Role="tblTypePlateforme" Type="Self.tblTypePlateforme" Multiplicity="1" />
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypePlateforme">
+              <PropertyRef Name="idTypePlateforme" />
+            </Principal>
+            <Dependent Role="tblPlateforme">
+              <PropertyRef Name="idTypePlateforme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TestProjetTest">
+          <End Role="tblProjetTest" Type="Self.tblProjetTest" Multiplicity="1" />
+          <End Role="tblTest" Type="Self.tblTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProjetTest">
+              <PropertyRef Name="idProjetTest" />
+            </Principal>
+            <Dependent Role="tblTest">
+              <PropertyRef Name="idProjetTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblCategorieEmploiEmploye">
+          <End Role="tblCategorieEmploi" Type="Self.tblCategorieEmploi" Multiplicity="*" />
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+        </Association>
+        <Association Name="tblClassificationJeu">
+          <End Role="tblClassification" Type="Self.tblClassification" Multiplicity="*" />
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+        </Association>
+        <Association Name="tblEquipeEmploye">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+          <End Role="tblEquipe" Type="Self.tblEquipe" Multiplicity="*" />
+        </Association>
+        <Association Name="tblGenreJeu">
+          <End Role="tblGenre" Type="Self.tblGenre" Multiplicity="*" />
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+        </Association>
+        <Association Name="tblPlateformeJeu">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+          <End Role="tblPlateforme" Type="Self.tblPlateforme" Multiplicity="*" />
+        </Association>
+        <Association Name="tblThemeJeu">
+          <End Role="tblJeu" Type="Self.tblJeu" Multiplicity="*" />
+          <End Role="tblTheme" Type="Self.tblTheme" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BdTexcel_Eddy_FranckEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAdministrateurs" EntityType="Self.tblAdministrateur" />
+          <EntitySet Name="tblCategories" EntityType="Self.tblCategorie" />
+          <EntitySet Name="tblCategorieEmplois" EntityType="Self.tblCategorieEmploi" />
+          <EntitySet Name="tblClassifications" EntityType="Self.tblClassification" />
+          <EntitySet Name="tblDirecteurs" EntityType="Self.tblDirecteur" />
+          <EntitySet Name="tblEmployes" EntityType="Self.tblEmploye" />
+          <EntitySet Name="tblEquipes" EntityType="Self.tblEquipe" />
+          <EntitySet Name="tblGenres" EntityType="Self.tblGenre" />
+          <EntitySet Name="tblGerants" EntityType="Self.tblGerant" />
+          <EntitySet Name="tblJeus" EntityType="Self.tblJeu" />
+          <EntitySet Name="tblPlateformes" EntityType="Self.tblPlateforme" />
+          <EntitySet Name="tblProjetTests" EntityType="Self.tblProjetTest" />
+          <EntitySet Name="tblSEs" EntityType="Self.tblSE" />
+          <EntitySet Name="tblTests" EntityType="Self.tblTest" />
+          <EntitySet Name="tblThemes" EntityType="Self.tblTheme" />
+          <EntitySet Name="tblTypePlateformes" EntityType="Self.tblTypePlateforme" />
+          <EntitySet Name="tblVilles" EntityType="Self.tblVille" />
+          <AssociationSet Name="fk_AdministrateurGerant" Association="Self.fk_AdministrateurGerant">
+            <End Role="tblGerant" EntitySet="tblGerants" />
+            <End Role="tblAdministrateur" EntitySet="tblAdministrateurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CategorieTest" Association="Self.fk_CategorieTest">
+            <End Role="tblCategorie" EntitySet="tblCategories" />
+            <End Role="tblTest" EntitySet="tblTests" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Directeur" Association="Self.fk_Directeur">
+            <End Role="tblDirecteur" EntitySet="tblDirecteurs" />
+            <End Role="tblEquipe" EntitySet="tblEquipes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DirecteurGerant" Association="Self.fk_DirecteurGerant">
+            <End Role="tblGerant" EntitySet="tblGerants" />
+            <End Role="tblDirecteur" EntitySet="tblDirecteurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GerantEmploye" Association="Self.fk_GerantEmploye">
+            <End Role="tblEmploye" EntitySet="tblEmployes" />
+            <End Role="tblGerant" EntitySet="tblGerants" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ville" Association="Self.fk_Ville">
+            <End Role="tblVille" EntitySet="tblVilles" />
+            <End Role="tblEmploye" EntitySet="tblEmployes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Equipe" Association="Self.fk_Equipe">
+            <End Role="tblEquipe" EntitySet="tblEquipes" />
+            <End Role="tblTest" EntitySet="tblTests" />
+          </AssociationSet>
+          <AssociationSet Name="fk_JeuProjetTest" Association="Self.fk_JeuProjetTest">
+            <End Role="tblProjetTest" EntitySet="tblProjetTests" />
+            <End Role="tblJeu" EntitySet="tblJeus" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodeSE" Association="Self.fk_CodeSE">
+            <End Role="tblSE" EntitySet="tblSEs" />
+            <End Role="tblPlateforme" EntitySet="tblPlateformes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TypePlateforme" Association="Self.fk_TypePlateforme">
+            <End Role="tblTypePlateforme" EntitySet="tblTypePlateformes" />
+            <End Role="tblPlateforme" EntitySet="tblPlateformes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TestProjetTest" Association="Self.fk_TestProjetTest">
+            <End Role="tblProjetTest" EntitySet="tblProjetTests" />
+            <End Role="tblTest" EntitySet="tblTests" />
+          </AssociationSet>
+          <AssociationSet Name="tblCategorieEmploiEmploye" Association="Self.tblCategorieEmploiEmploye">
+            <End Role="tblCategorieEmploi" EntitySet="tblCategorieEmplois" />
+            <End Role="tblEmploye" EntitySet="tblEmployes" />
+          </AssociationSet>
+          <AssociationSet Name="tblClassificationJeu" Association="Self.tblClassificationJeu">
+            <End Role="tblClassification" EntitySet="tblClassifications" />
+            <End Role="tblJeu" EntitySet="tblJeus" />
+          </AssociationSet>
+          <AssociationSet Name="tblEquipeEmploye" Association="Self.tblEquipeEmploye">
+            <End Role="tblEmploye" EntitySet="tblEmployes" />
+            <End Role="tblEquipe" EntitySet="tblEquipes" />
+          </AssociationSet>
+          <AssociationSet Name="tblGenreJeu" Association="Self.tblGenreJeu">
+            <End Role="tblGenre" EntitySet="tblGenres" />
+            <End Role="tblJeu" EntitySet="tblJeus" />
+          </AssociationSet>
+          <AssociationSet Name="tblPlateformeJeu" Association="Self.tblPlateformeJeu">
+            <End Role="tblJeu" EntitySet="tblJeus" />
+            <End Role="tblPlateforme" EntitySet="tblPlateformes" />
+          </AssociationSet>
+          <AssociationSet Name="tblThemeJeu" Association="Self.tblThemeJeu">
+            <End Role="tblJeu" EntitySet="tblJeus" />
+            <End Role="tblTheme" EntitySet="tblThemes" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BdTexcel_Eddy_FranckModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BdTexcel_Eddy_FranckModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BdTexcel_Eddy_FranckModelStoreContainer" CdmEntityContainer="BdTexcel_Eddy_FranckEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdministrateurs">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblAdministrateur">
+              <MappingFragment StoreEntitySet="tblAdministrateur">
+                <ScalarProperty Name="idAdministrateur" ColumnName="idAdministrateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblCategorie">
+              <MappingFragment StoreEntitySet="tblCategorie">
+                <ScalarProperty Name="idCategorie" ColumnName="idCategorie" />
+                <ScalarProperty Name="descriptionCategorie" ColumnName="descriptionCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategorieEmplois">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblCategorieEmploi">
+              <MappingFragment StoreEntitySet="tblCategorieEmploi">
+                <ScalarProperty Name="idCategorieEmploi" ColumnName="idCategorieEmploi" />
+                <ScalarProperty Name="descriptionCategorieEmploi" ColumnName="descriptionCategorieEmploi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClassifications">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblClassification">
+              <MappingFragment StoreEntitySet="tblClassification">
+                <ScalarProperty Name="idClassification" ColumnName="idClassification" />
+                <ScalarProperty Name="descriptionClassification" ColumnName="descriptionClassification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDirecteurs">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblDirecteur">
+              <MappingFragment StoreEntitySet="tblDirecteur">
+                <ScalarProperty Name="idDirecteur" ColumnName="idDirecteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployes">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblEmploye">
+              <MappingFragment StoreEntitySet="tblEmploye">
+                <ScalarProperty Name="idEmploye" ColumnName="idEmploye" />
+                <ScalarProperty Name="nomEmploye" ColumnName="nomEmploye" />
+                <ScalarProperty Name="prenomEmploye" ColumnName="prenomEmploye" />
+                <ScalarProperty Name="dateDeNaissanceEmploye" ColumnName="dateDeNaissanceEmploye" />
+                <ScalarProperty Name="adresseligne1Employe" ColumnName="adresseligne1Employe" />
+                <ScalarProperty Name="adresseligne2Employe" ColumnName="adresseligne2Employe" />
+                <ScalarProperty Name="codePostalEmploye" ColumnName="codePostalEmploye" />
+                <ScalarProperty Name="telephoneResidenceEmploye" ColumnName="telephoneResidenceEmploye" />
+                <ScalarProperty Name="posteTelephoniqueEmploye" ColumnName="posteTelephoniqueEmploye" />
+                <ScalarProperty Name="matriculeEmploye" ColumnName="matriculeEmploye" />
+                <ScalarProperty Name="idVille" ColumnName="idVille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEquipes">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblEquipe">
+              <MappingFragment StoreEntitySet="tblEquipe">
+                <ScalarProperty Name="idEquipe" ColumnName="idEquipe" />
+                <ScalarProperty Name="nomEquipe" ColumnName="nomEquipe" />
+                <ScalarProperty Name="idChefEquipe" ColumnName="idChefEquipe" />
+                <ScalarProperty Name="idDirecteur" ColumnName="idDirecteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGenres">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblGenre">
+              <MappingFragment StoreEntitySet="tblGenre">
+                <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+                <ScalarProperty Name="descriptionGenre" ColumnName="descriptionGenre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGerants">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblGerant">
+              <MappingFragment StoreEntitySet="tblGerant">
+                <ScalarProperty Name="idGerant" ColumnName="idGerant" />
+                <ScalarProperty Name="loginGerant" ColumnName="loginGerant" />
+                <ScalarProperty Name="motDePasseGerant" ColumnName="motDePasseGerant" />
+                <ScalarProperty Name="roleGerant" ColumnName="roleGerant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblJeus">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblJeu">
+              <MappingFragment StoreEntitySet="tblJeu">
+                <ScalarProperty Name="idJeu" ColumnName="idJeu" />
+                <ScalarProperty Name="nomJeu" ColumnName="nomJeu" />
+                <ScalarProperty Name="devellopeurJeu" ColumnName="devellopeurJeu" />
+                <ScalarProperty Name="descriptionJeu" ColumnName="descriptionJeu" />
+                <ScalarProperty Name="configurationMinimaleJeu" ColumnName="configurationMinimaleJeu" />
+                <ScalarProperty Name="idProjetTest" ColumnName="idProjetTest" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlateformes">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblPlateforme">
+              <MappingFragment StoreEntitySet="tblPlateforme">
+                <ScalarProperty Name="idPlateforme" ColumnName="idPlateforme" />
+                <ScalarProperty Name="nomPlateforme" ColumnName="nomPlateforme" />
+                <ScalarProperty Name="configurationPlateforme" ColumnName="configurationPlateforme" />
+                <ScalarProperty Name="idTypePlateforme" ColumnName="idTypePlateforme" />
+                <ScalarProperty Name="codeSE" ColumnName="codeSE" />
+                <ScalarProperty Name="tagPlateforme" ColumnName="tagPlateforme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProjetTests">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblProjetTest">
+              <MappingFragment StoreEntitySet="tblProjetTest">
+                <ScalarProperty Name="idProjetTest" ColumnName="idProjetTest" />
+                <ScalarProperty Name="nomProjetTest" ColumnName="nomProjetTest" />
+                <ScalarProperty Name="dateCreationProjetTest" ColumnName="dateCreationProjetTest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSEs">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblSE">
+              <MappingFragment StoreEntitySet="tblSE">
+                <ScalarProperty Name="codeSE" ColumnName="codeSE" />
+                <ScalarProperty Name="nomSE" ColumnName="nomSE" />
+                <ScalarProperty Name="editionSE" ColumnName="editionSE" />
+                <ScalarProperty Name="versionSE" ColumnName="versionSE" />
+                <ScalarProperty Name="tagSE" ColumnName="tagSE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTests">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblTest">
+              <MappingFragment StoreEntitySet="tblTest">
+                <ScalarProperty Name="idTest" ColumnName="idTest" />
+                <ScalarProperty Name="descriptionTest" ColumnName="descriptionTest" />
+                <ScalarProperty Name="idCategorie" ColumnName="idCategorie" />
+                <ScalarProperty Name="idEquipe" ColumnName="idEquipe" />
+                <ScalarProperty Name="idProjetTest" ColumnName="idProjetTest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblThemes">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblTheme">
+              <MappingFragment StoreEntitySet="tblTheme">
+                <ScalarProperty Name="idTheme" ColumnName="idTheme" />
+                <ScalarProperty Name="descriptionTheme" ColumnName="descriptionTheme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypePlateformes">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblTypePlateforme">
+              <MappingFragment StoreEntitySet="tblTypePlateforme">
+                <ScalarProperty Name="idTypePlateforme" ColumnName="idTypePlateforme" />
+                <ScalarProperty Name="nomTypePlateforme" ColumnName="nomTypePlateforme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVilles">
+            <EntityTypeMapping TypeName="BdTexcel_Eddy_FranckModel.tblVille">
+              <MappingFragment StoreEntitySet="tblVille">
+                <ScalarProperty Name="idVille" ColumnName="idVille" />
+                <ScalarProperty Name="nomVille" ColumnName="nomVille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblCategorieEmploiEmploye" TypeName="BdTexcel_Eddy_FranckModel.tblCategorieEmploiEmploye" StoreEntitySet="tblCategorieEmploiEmploye">
+            <EndProperty Name="tblCategorieEmploi">
+              <ScalarProperty Name="idCategorieEmploi" ColumnName="idCategorieEmploi" />
+            </EndProperty>
+            <EndProperty Name="tblEmploye">
+              <ScalarProperty Name="idEmploye" ColumnName="idEmploye" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblClassificationJeu" TypeName="BdTexcel_Eddy_FranckModel.tblClassificationJeu" StoreEntitySet="tblClassificationJeu">
+            <EndProperty Name="tblClassification">
+              <ScalarProperty Name="idClassification" ColumnName="idClassification" />
+            </EndProperty>
+            <EndProperty Name="tblJeu">
+              <ScalarProperty Name="idJeu" ColumnName="idJeu" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblEquipeEmploye" TypeName="BdTexcel_Eddy_FranckModel.tblEquipeEmploye" StoreEntitySet="tblEquipeEmploye">
+            <EndProperty Name="tblEmploye">
+              <ScalarProperty Name="idEmploye" ColumnName="idEmploye" />
+            </EndProperty>
+            <EndProperty Name="tblEquipe">
+              <ScalarProperty Name="idEquipe" ColumnName="idEquipe" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblGenreJeu" TypeName="BdTexcel_Eddy_FranckModel.tblGenreJeu" StoreEntitySet="tblGenreJeu">
+            <EndProperty Name="tblGenre">
+              <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+            </EndProperty>
+            <EndProperty Name="tblJeu">
+              <ScalarProperty Name="idJeu" ColumnName="idJeu" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblPlateformeJeu" TypeName="BdTexcel_Eddy_FranckModel.tblPlateformeJeu" StoreEntitySet="tblPlateformeJeu">
+            <EndProperty Name="tblJeu">
+              <ScalarProperty Name="idJeu" ColumnName="idJeu" />
+            </EndProperty>
+            <EndProperty Name="tblPlateforme">
+              <ScalarProperty Name="idPlateforme" ColumnName="idPlateforme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblThemeJeu" TypeName="BdTexcel_Eddy_FranckModel.tblThemeJeu" StoreEntitySet="tblThemeJeu">
+            <EndProperty Name="tblJeu">
+              <ScalarProperty Name="idJeu" ColumnName="idJeu" />
+            </EndProperty>
+            <EndProperty Name="tblTheme">
+              <ScalarProperty Name="idTheme" ColumnName="idTheme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BdTexcel_Eddy_FranckModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BdTexcel_Eddy_FranckModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BdTexcel_Eddy_FranckModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TexcelASPNETbyEddy.tblSE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Système d'exploitation</h2>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <p>
+            @Html.ActionLink("Créer nouveau", "Create")
+        </p>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-3">
+        <!--Ajout perso-->
+        <form method="post" action="http://localhost:40447/SE/Index">
+            <input type="text" name="Recherche" />
+            <input type="submit" value="Rechercher" />
+        </form>
+    </div>
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.nomSE)-->
+            NOM
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.editionSE)-->
+            ÉDITION
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.versionSE)-->
+            VERSION
+        </th>
+        <!--<th>
+            Html.DisplayNameFor(model => model.tagSE)
+        </th>-->
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.editionSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.versionSE)
+        </td>
+        <!--<td>
+            Html.DisplayFor(modelItem => item.tagSE)
+        </td>-->
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.codeSE }) |
+            @Html.ActionLink("Details", "Details", new { id=item.codeSE }) |
+            @Html.ActionLink("Effacer", "Delete", new { id=item.codeSE })
+        </td>
+    </tr>
+}
+
+</table>

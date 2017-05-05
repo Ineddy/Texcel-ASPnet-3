@@ -1,0 +1,50 @@
+﻿@model TexcelASPNETbyEddy.tblSE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblSE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editionSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editionSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.versionSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.versionSE)
+        </dd>
+
+        <!--<dt>
+            Html.DisplayNameFor(model => model.tagSE)
+        </dt>
+
+        <dd>
+            Html.DisplayFor(model => model.tagSE)
+        </dd>-->
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codeSE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

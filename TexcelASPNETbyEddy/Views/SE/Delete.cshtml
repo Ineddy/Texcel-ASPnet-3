@@ -1,0 +1,68 @@
+﻿@model TexcelASPNETbyEddy.tblSE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblSE</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editionSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editionSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.versionSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.versionSE)
+        </dd>
+
+        <!--<dt>
+            Html.DisplayNameFor(model => model.tagSE)
+        </dt>
+
+        <dd>
+            Html.DisplayFor(model => model.tagSE)
+        </dd>-->
+
+        @if (ViewBag.ErreurSE == true)
+        {
+            <p style="color:red;">
+                @ViewBag.Message 
+            </p>
+
+            ViewBag.ErreurSE = false;
+        }
+        
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+
+</div>

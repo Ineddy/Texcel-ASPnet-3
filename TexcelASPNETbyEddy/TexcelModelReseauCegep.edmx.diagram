@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7f2449b9c394988b5e0e49a90a4815a" Name="Diagram1">
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblAdministrateur" Width="1.5" PointX="3.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblCategorie" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblCategorieEmploi" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblClassification" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblDirecteur" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblEmploye" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblEquipe" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblGenre" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblGerant" Width="1.5" PointX="1.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblJeu" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblPlateforme" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblProjetTest" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblSE" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblTest" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblTheme" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblTypePlateforme" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdTexcel_Eddy_FranckModel.tblVille" Width="1.5" PointX="1.5" PointY="26" IsExpanded="true" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_AdministrateurGerant" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_CategorieTest" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_Directeur" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_DirecteurGerant" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_GerantEmploye" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_Ville" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_Equipe" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_JeuProjetTest" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_CodeSE" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_TypePlateforme" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.fk_TestProjetTest" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblCategorieEmploiEmploye" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblClassificationJeu" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblEquipeEmploye" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblGenreJeu" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblPlateformeJeu" ManuallyRouted="false" />
+        <AssociationConnector Association="BdTexcel_Eddy_FranckModel.tblThemeJeu" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
