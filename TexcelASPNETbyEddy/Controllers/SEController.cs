@@ -11,6 +11,8 @@ namespace TexcelASPNETbyEddy.Controllers
     public class SEController : Controller
     {
         // GET: SE
+
+        //PREMIER COMMIT FRANCK
         BdTexcel_Eddy_FranckEntities bd = new BdTexcel_Eddy_FranckEntities();
         public ActionResult Index()
         {
