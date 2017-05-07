@@ -81,37 +81,21 @@ namespace TexcelASPNETbyEddy.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(tblSE SE)
         {
-            
-                // TODO: Add update logic here
 
-                if (ModelState.IsValid)
-                {
-                    if (existenceDuSE(SE) == true)
-                    {
-                        ViewBag.ErreurSE = true;
-                        ViewBag.Message = " Ce système d'exploitation existe déja!!! ";
+            try
+            {
+                SE.tagSE = SE.nomSE + SE.editionSE + SE.versionSE;
 
-                        return View(SE);
-                    }
-                    else
-                    {
-                        //SE.tagSE = SE.nomSE + SE.editionSE + SE.versionSE;
-                        
-                        bd.Entry(SE).State = EntityState.Modified;
+                bd.Entry(SE).State = EntityState.Modified;
 
-                        bd.SaveChanges();
+                bd.SaveChanges();
 
-                        return RedirectToAction("Index");
-                    }
-
-                }
-
-                return View(SE);
-            /*}
+                return RedirectToAction("Index");
+            }
             catch
             {
                 return View(SE);
-            }*/
+            }
         }
 
         // GET: tblSE/Delete/5
