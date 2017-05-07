@@ -23,6 +23,32 @@ namespace TexcelASPNETbyEddy.Controllers
             return View(bd.tblSEs.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string texte)
+        {
+            //string[] infoSE = new string[4];
+            List<tblSE> listeResultatRechercheSE = new List<tblSE>();
+            //String messageTest = "";
+            var db = new BdTexcel_Eddy_FranckEntities();
+
+            var requeteRechercheSE = from se in db.tblSEs
+                                     where se.tagSE.Contains(texte)
+                                     select se;
+
+            foreach (var se in requeteRechercheSE)
+            {
+
+                tblSE monSE = new tblSE();
+                monSE.codeSE = se.codeSE;
+                monSE.nomSE = se.nomSE;
+                monSE.tagSE = se.tagSE;
+                monSE.editionSE = se.editionSE;
+                monSE.versionSE = se.versionSE;
+                listeResultatRechercheSE.Add(monSE);
+            }
+            return View(listeResultatRechercheSE.ToList());
+        }
+
         // GET: tblSE/Details/5
         public ActionResult Details(int id = 0)
         {
