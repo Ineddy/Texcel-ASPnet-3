@@ -1,0 +1,77 @@
+﻿@model TexcelASPNETbyEddy.tblPlateforme
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Plateforme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.nomPlateforme)-->
+            Nom
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomPlateforme)
+        </dd>
+
+        <dt>
+           <!-- @Html.DisplayNameFor(model => model.configurationPlateforme)-->
+            Configuration
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.configurationPlateforme)
+        </dd>
+
+        <!--<dt>
+            Html.DisplayNameFor(model => model.tagPlateforme)
+        </dt>
+
+        <dd>
+            Html.DisplayFor(model => model.tagPlateforme)
+        </dd>-->
+
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.tblSE.nomSE)-->
+            Système d'exploitation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSE.nomSE)
+        </dd>
+
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.tblTypePlateforme.nomTypePlateforme)-->
+            Type de plateforme
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTypePlateforme.nomTypePlateforme)
+        </dd>
+
+        @if (ViewBag.ErreurPlateforme == true)
+        {
+            <p style="color:red;">
+                @ViewBag.Message
+            </p>
+
+            ViewBag.ErreurPlateforme = false;
+        }
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

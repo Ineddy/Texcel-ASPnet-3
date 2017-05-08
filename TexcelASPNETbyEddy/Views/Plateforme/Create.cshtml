@@ -1,0 +1,75 @@
+﻿@model TexcelASPNETbyEddy.tblPlateforme
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Plateforme</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomPlateforme, " Nom  ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomPlateforme, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomPlateforme, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.configurationPlateforme," Configuration  ",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.configurationPlateforme, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.configurationPlateforme, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idTypePlateforme, "Type de la plateforme", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.idTypePlateforme, ViewBag.TypePlateformes as SelectList , htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tblTypePlateforme.nomTypePlateforme, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeSE, "Système d'exploitation", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.codeSE, ViewBag.SE as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.codeSE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (ViewBag.ErreurPlateforme == true)
+        {
+            <div class="form-group">
+                <p style="color:red;" class="col-md-offset-2 col-md-10"> @ViewBag.Message </p>
+            </div>
+
+            ViewBag.ErreurPlateforme = false;
+        }
+
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

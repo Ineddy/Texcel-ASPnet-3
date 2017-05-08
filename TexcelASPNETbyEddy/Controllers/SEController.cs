@@ -141,7 +141,7 @@ namespace TexcelASPNETbyEddy.Controllers
 
         private bool existenceDuSE(tblSE SE)
         {
-            List<tblSE> listeDesSE = this.listeDesSE();
+            List<tblSE> listeDesSE = bd.tblSEs.ToList();
             bool existeDansLaBD = false;
 
             foreach (tblSE se in listeDesSE)

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TexcelASPNETbyEddy.tblPlateforme>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Plateforme</h2>
+
+<p>
+    @Html.ActionLink("Créer nouveau", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           NOM
+        </th>
+        <th>
+           CONFIGURATION
+        </th>
+        <th>
+           SYSTÈME D'EXPLOITATION
+        </th>
+        <th>
+           TYPE DE PLATEFORME
+        </th>
+        <th>
+            TAG
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomPlateforme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.configurationPlateforme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblSE.nomSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblTypePlateforme.nomTypePlateforme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tagPlateforme)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.idPlateforme }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPlateforme }) |
+            @Html.ActionLink("Effacer", "Delete", new { id=item.idPlateforme })
+        </td>
+    </tr>
+}
+
+</table>

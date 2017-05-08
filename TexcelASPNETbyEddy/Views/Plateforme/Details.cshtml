@@ -1,0 +1,62 @@
+﻿@model TexcelASPNETbyEddy.tblPlateforme
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Plateforme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.nomPlateforme)-->
+            Nom
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomPlateforme)
+        </dd>
+
+        <dt>
+           <!-- @Html.DisplayNameFor(model => model.configurationPlateforme)-->
+            Configuration
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.configurationPlateforme)
+        </dd>
+
+        <!--<dt>
+            Html.DisplayNameFor(model => model.tagPlateforme)
+        </dt>
+
+        <dd>
+            Html.DisplayFor(model => model.tagPlateforme)
+        </dd>-->
+
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.tblSE.nomSE)-->
+            Système d'exploitation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSE.nomSE)
+        </dd>
+
+        <dt>
+            <!--@Html.DisplayNameFor(model => model.tblTypePlateforme.nomTypePlateforme)-->
+            Type de plpateforme
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTypePlateforme.nomTypePlateforme)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPlateforme }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

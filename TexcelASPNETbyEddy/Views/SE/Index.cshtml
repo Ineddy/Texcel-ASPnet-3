@@ -43,9 +43,10 @@
             <!--@Html.DisplayNameFor(model => model.versionSE)-->
             VERSION
         </th>
-        <!--<th>
-            Html.DisplayNameFor(model => model.tagSE)
-        </th>-->
+        <th>
+            <!-- Html.DisplayNameFor(model => model.tagSE)-->
+            TAG
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -56,9 +57,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.editionSE)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.versionSE)
         </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.tagSE)
+        </td>
+
         <!--<td>
             Html.DisplayFor(modelItem => item.tagSE)
         </td>-->
