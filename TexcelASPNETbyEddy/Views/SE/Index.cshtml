@@ -18,11 +18,13 @@
     </div>
 
     <div class="col-md-3">
-        <!--Ajout perso-->
-        <form method="post" action="http://localhost:40447/SE/Index">
-            <input type="text" name="Recherche" />
+        @using (Html.BeginForm("index", "SE"))
+        {
+            //Champ texte de recherche
+            @Html.TextBox("texte")
+            //Input de validation (n'est pas généré par un programme d'assistance)
             <input type="submit" value="Rechercher" />
-        </form>
+        }
     </div>
 </div>
 
