@@ -11,10 +11,43 @@ namespace TexcelASPNETbyEddy.Controllers
     {
         // GET: Plateforme
         BdTexcel_Eddy_FranckEntities bd = new BdTexcel_Eddy_FranckEntities();
+
         public ActionResult Index()
         {
             return View(bd.tblPlateformes.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string texte)
+        {
+
+            List<tblPlateforme> listeResultatRecherchePlateforme = new List<tblPlateforme>();
+            var db = new BdTexcel_Eddy_FranckEntities();
+
+            var requeteRecherchePlateforme = from plateforme in db.tblPlateformes
+                                     where (plateforme.tagPlateforme.Contains(texte))||(plateforme.tblTypePlateforme.nomTypePlateforme.Contains(texte)) || (plateforme.tblSE.nomSE.Contains(texte))
+                                             select plateforme;
+
+            foreach (var plateforme in requeteRecherchePlateforme)
+            {
+
+                tblPlateforme maPlateforme = new tblPlateforme();
+                maPlateforme.idPlateforme = plateforme.idPlateforme;
+                maPlateforme.idTypePlateforme = plateforme.idTypePlateforme;
+                //maPlateforme.tblTypePlateforme.nomTypePlateforme;
+                maPlateforme.configurationPlateforme = plateforme.configurationPlateforme;
+                maPlateforme.codeSE = plateforme.codeSE;
+                maPlateforme.nomPlateforme = plateforme.nomPlateforme;
+                maPlateforme.tagPlateforme = plateforme.tagPlateforme;
+                //maPlateforme.tblJeus = plateforme.tblJeus;
+                maPlateforme.tblSE = plateforme.tblSE;
+                maPlateforme.tblTypePlateforme = plateforme.tblTypePlateforme;
+                listeResultatRecherchePlateforme.Add(maPlateforme);
+            }
+            return View(listeResultatRecherchePlateforme.ToList());
+            // return View(bd.tblPlateformes.ToList());
+        }
+
+
 
         public ActionResult Details(int id = 0)
         {

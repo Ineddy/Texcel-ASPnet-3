@@ -26,9 +26,7 @@ namespace TexcelASPNETbyEddy.Controllers
         [HttpPost]
         public ActionResult Index(string texte)
         {
-            //string[] infoSE = new string[4];
             List<tblSE> listeResultatRechercheSE = new List<tblSE>();
-            //String messageTest = "";
             var db = new BdTexcel_Eddy_FranckEntities();
 
             var requeteRechercheSE = from se in db.tblSEs
