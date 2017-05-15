@@ -11,7 +11,9 @@ namespace TexcelASPNETbyEddy
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class tblPlateforme
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +23,13 @@ namespace TexcelASPNETbyEddy
         }
     
         public int idPlateforme { get; set; }
+
+        [Required(ErrorMessage = " Entrez un nom de plateforme ", AllowEmptyStrings = false)]
+        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
         public string nomPlateforme { get; set; }
+
+        [Required(ErrorMessage = " Entrez une configuration de plateforme ", AllowEmptyStrings = false)]
+        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
         public string configurationPlateforme { get; set; }
         public int idTypePlateforme { get; set; }
         public int codeSE { get; set; }

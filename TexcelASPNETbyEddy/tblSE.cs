@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
+
 namespace TexcelASPNETbyEddy
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class tblSE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +22,21 @@ namespace TexcelASPNETbyEddy
             this.tblPlateformes = new HashSet<tblPlateforme>();
         }
     
+        
         public int codeSE { get; set; }
+
+        [Required(ErrorMessage = " Entrez un nom de système d'exploitation ", AllowEmptyStrings = false)]
+        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
         public string nomSE { get; set; }
+
+        [Required(ErrorMessage = " Entrez une édition pour le système d'exploitation ", AllowEmptyStrings = false)]
+        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
         public string editionSE { get; set; }
+
+        [Required(ErrorMessage = " Entrez une version pour le système d'exploitation ", AllowEmptyStrings = false)]
+        [RegularExpression("^[0-9]{1,}$", ErrorMessage = " Valeur invalide!!! ")]
         public string versionSE { get; set; }
+
         public string tagSE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
