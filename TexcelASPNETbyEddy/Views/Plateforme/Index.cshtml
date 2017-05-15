@@ -47,9 +47,9 @@
         <th>
            TYPE DE PLATEFORME
         </th>
-        <th>
+        <!--<th>
             TAG
-        </th>
+        </th>-->
     </tr>
 
 @foreach (var item in Model) {
@@ -66,9 +66,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.tblTypePlateforme.nomTypePlateforme)
         </td>
+        <!--
         <td>
-            @Html.DisplayFor(modelItem => item.tagPlateforme)
-        </td>
+            @*Html.DisplayFor(modelItem => item.tagPlateforme)*@
+        </td>-->
 
         <td>
             @Html.ActionLink("Editer", "Edit", new { id=item.idPlateforme }) |
