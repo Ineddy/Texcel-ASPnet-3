@@ -94,6 +94,7 @@ sub {
 img {
   border: 0;
 }
+
 svg:not(:root) {
   overflow: hidden;
 }
@@ -6886,3 +6887,16 @@ table .danger th,
     color: #fff;
 }
 
+.arrondie {
+-moz-border-radius:50px 0;
+-webkit-border-radius:50px 0;
+border-radius:50px 0;
+}
+
+.accueil{
+    background-color: rgba(255, 255, 255, 0.5);
+    -moz-border-radius:50px 0;
+    -webkit-border-radius:50px 0;
+    border-radius:50px 0;
+    padding:10px;
+}

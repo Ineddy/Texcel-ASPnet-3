@@ -291,6 +291,8 @@
     <Content Include="Content\bootstrap-solar.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\eddy.jpg" />
+    <Content Include="Content\images\franck.jpg" />
     <Content Include="Content\images\jeu.jpg" />
     <Content Include="Content\images\TE_OccasionDeChanger.jpg" />
     <Content Include="Content\images\texcel.png" />

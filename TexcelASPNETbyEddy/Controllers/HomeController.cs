@@ -22,7 +22,10 @@ namespace TexcelASPNETbyEddy.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contactez-nous";
+            ViewBag.Eddy = "Eddy Fontaine";
+            ViewBag.Franck = "Franck Michael Atongfor";
+
 
             return View();
         }
