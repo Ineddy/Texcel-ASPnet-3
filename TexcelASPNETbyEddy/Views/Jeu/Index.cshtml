@@ -1,14 +1,36 @@
 ﻿@model IEnumerable<TexcelASPNETbyEddy.tblJeu>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jeux";
 }
 
-<h2>Index</h2>
+<h2>Jeux</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="row">
+
+    <div class="col-md-3">
+        @if (Session["Role"].ToString() == "administrateur")
+        {
+            <p>
+                @Html.ActionLink("Créer nouveau", "Create")
+            </p>
+        }
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-3">
+        @using (Html.BeginForm("Index", "Jeu"))
+        {
+            //Champ texte de recherche
+            @Html.TextBox("texte")
+            //Input de validation (n'est pas généré par un programme d'assistance)
+            <input type="submit" value="Rechercher" />
+        }
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>

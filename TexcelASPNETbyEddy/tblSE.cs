@@ -26,11 +26,11 @@ namespace TexcelASPNETbyEddy
         public int codeSE { get; set; }
 
         [Required(ErrorMessage = " Entrez un nom de système d'exploitation ", AllowEmptyStrings = false)]
-        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string nomSE { get; set; }
 
         [Required(ErrorMessage = " Entrez une édition pour le système d'exploitation ", AllowEmptyStrings = false)]
-        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string editionSE { get; set; }
 
         [Required(ErrorMessage = " Entrez une version pour le système d'exploitation ", AllowEmptyStrings = false)]

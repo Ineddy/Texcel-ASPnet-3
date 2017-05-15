@@ -11,7 +11,8 @@ namespace TexcelASPNETbyEddy
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblJeu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,9 +25,21 @@ namespace TexcelASPNETbyEddy
         }
     
         public int idJeu { get; set; }
+
+        [Required(ErrorMessage = " Entrez un nom de Jeu ", AllowEmptyStrings = false)]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string nomJeu { get; set; }
+
+        [Required(ErrorMessage = " Entrez un nom de développeur ", AllowEmptyStrings = false)]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string devellopeurJeu { get; set; }
+
+        [Required(ErrorMessage = " Entrez une description de jeu ", AllowEmptyStrings = false)]
+        /* [RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string descriptionJeu { get; set; }
+
+        [Required(ErrorMessage = " Entrez une configuration minimal ", AllowEmptyStrings = false)]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string configurationMinimaleJeu { get; set; }
         public Nullable<int> idProjetTest { get; set; }
         public string tag { get; set; }

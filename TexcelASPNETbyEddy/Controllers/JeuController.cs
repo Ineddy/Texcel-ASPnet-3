@@ -18,6 +18,56 @@ namespace TexcelASPNETbyEddy.Controllers
             return View(bd.tblJeus.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string texte)
+        {
+
+            List<tblJeu> listeResultatRechercheJeu = new List<tblJeu>();
+            var db = new BdTexcel_Eddy_FranckEntities();
+
+            var requeteRechercheJeu = from jeu in db.tblJeus
+                                             where (jeu.tag.Contains(texte)) //|| (jeu.tblTypePlateforme.nomTypePlateforme.Contains(texte)) || (plateforme.tblSE.nomSE.Contains(texte))
+                                             select jeu;
+
+            foreach (var jeu in requeteRechercheJeu)
+            {
+
+                tblJeu monJeu = new tblJeu();
+                monJeu.idJeu = jeu.idJeu;
+                monJeu.idProjetTest = jeu.idProjetTest;
+                monJeu.nomJeu = jeu.nomJeu;
+                monJeu.tag = jeu.tag;
+                monJeu.tblClassifications = jeu.tblClassifications;
+                monJeu.tblGenres = jeu.tblGenres;
+                monJeu.tblPlateformes = jeu.tblPlateformes;
+                monJeu.tblProjetTest = jeu.tblProjetTest;
+                monJeu.tblThemes = jeu.tblThemes;
+                monJeu.devellopeurJeu = jeu.devellopeurJeu;
+                monJeu.descriptionJeu = jeu.descriptionJeu;
+                monJeu.configurationMinimaleJeu = jeu.configurationMinimaleJeu; 
+                listeResultatRechercheJeu.Add(monJeu);
+
+
+
+                /*
+                maPlateforme.idPlateforme = plateforme.idPlateforme;
+                maPlateforme.idTypePlateforme = plateforme.idTypePlateforme;
+                //maPlateforme.tblTypePlateforme.nomTypePlateforme;
+                maPlateforme.configurationPlateforme = plateforme.configurationPlateforme;
+                maPlateforme.codeSE = plateforme.codeSE;
+                maPlateforme.nomPlateforme = plateforme.nomPlateforme;
+                maPlateforme.tagPlateforme = plateforme.tagPlateforme;
+                //maPlateforme.tblJeus = plateforme.tblJeus;
+                maPlateforme.tblSE = plateforme.tblSE;
+                maPlateforme.tblTypePlateforme = plateforme.tblTypePlateforme;
+                listeResultatRecherchePlateforme.Add(maPlateforme);
+                */
+            }
+            return View(listeResultatRechercheJeu.ToList());
+            // return View(bd.tblPlateformes.ToList());
+        }
+
+
         public ActionResult Details(int id = 0)
         {
             return View(bd.tblJeus.Find(id));

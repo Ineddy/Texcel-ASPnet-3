@@ -25,11 +25,11 @@ namespace TexcelASPNETbyEddy
         public int idPlateforme { get; set; }
 
         [Required(ErrorMessage = " Entrez un nom de plateforme ", AllowEmptyStrings = false)]
-        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string nomPlateforme { get; set; }
 
         [Required(ErrorMessage = " Entrez une configuration de plateforme ", AllowEmptyStrings = false)]
-        [RegularExpression("^([A-Z]|[a-z]){1,}$", ErrorMessage = " Valeur invalide!!! ")]
+        /*[RegularExpression("([A-Z]|[a-z]|[0-9]){1,}", ErrorMessage = " Valeur invalide!!! ")]*/
         public string configurationPlateforme { get; set; }
         public int idTypePlateforme { get; set; }
         public int codeSE { get; set; }
