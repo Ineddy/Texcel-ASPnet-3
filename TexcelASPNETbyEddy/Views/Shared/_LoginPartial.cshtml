@@ -1,22 +1,17 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@if (Session["UserID"]!=null)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-
+    
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Bonjour " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        <li style="margin-top:15px;">
+            Bonjour @Session["NomPrenom"]
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+        <li>@Html.ActionLink("Se déconnecter", "Index", "Gerant", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
     </ul>
-    }
+    
 }
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+@*else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Se connecter", "Index", "Gerant", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@

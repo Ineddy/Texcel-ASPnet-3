@@ -8,11 +8,16 @@
 <h2>Plateforme</h2>
 
 <div class="row">
+
     <div class="col-md-3">
-        <p>
-            @Html.ActionLink("Créer nouveau", "Create")
-        </p>
+        @if (Session["Role"].ToString() == "administrateur")
+        {
+            <p>
+                @Html.ActionLink("Créer nouveau", "Create")
+            </p>
+        }   
     </div>
+   
     <div class="col-md-3">
 
     </div>

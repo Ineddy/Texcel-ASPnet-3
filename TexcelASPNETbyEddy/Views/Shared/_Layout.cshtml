@@ -22,17 +22,23 @@
 
                 <!--@Html.ActionLink("TEXCEL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Jeux", "Index", "SE")</li>
-                    <li>@Html.ActionLink("Plateformes", "Index", "Plateforme")</li>
-                    <li>@Html.ActionLink("Systèmes d'exploitation", "Index", "SE")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+            @if (Session["UserID"]!=null)
+            {
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Jeux", "Index", "Jeu")</li>
+                        <li>@Html.ActionLink("Plateformes", "Index", "Plateforme")</li>
+                        <li>@Html.ActionLink("Systèmes d'exploitation", "Index", "SE")</li>
+                        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+           
         </div>
     </div>
     <div class="container body-content">

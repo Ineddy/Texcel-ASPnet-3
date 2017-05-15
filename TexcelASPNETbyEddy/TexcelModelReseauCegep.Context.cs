@@ -45,7 +45,10 @@ namespace TexcelASPNETbyEddy
         public virtual DbSet<tblTheme> tblThemes { get; set; }
         public virtual DbSet<tblTypePlateforme> tblTypePlateformes { get; set; }
         public virtual DbSet<tblVille> tblVilles { get; set; }
-    
+
+        public virtual DbSet<TexcelASPNETbyEddy.Models.JeuGenre> JeuGenre { get; set; }
+
+
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?

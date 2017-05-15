@@ -1,0 +1,110 @@
+﻿@model TexcelASPNETbyEddy.tblJeu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jeu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            NOM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomJeu)
+        </dd>
+
+        <dt>
+            DEVELLOPEUR
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.devellopeurJeu)
+        </dd>
+
+        <dt>
+            DESCRIPTION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descriptionJeu)
+        </dd>
+
+        <dt>
+           CONFIGURATION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.configurationMinimaleJeu)
+        </dd>
+
+        <dt>
+           GENRE(S)
+        </dt>
+
+        <dd>
+            @{
+
+                string lesGenres = "";
+
+                foreach (var genres in Model.tblGenres)
+                {
+
+                    lesGenres = genres.descriptionGenre + ", "+ lesGenres;
+
+
+                }
+
+                <p> @lesGenres</p>
+
+            }   
+        </dd>
+
+        <dt>
+            CLASSIFICATION(S)
+        </dt>
+
+        <dd>
+            @{   
+
+                string lesClassifications = "";
+
+                foreach (var classification in Model.tblClassifications)
+                {
+                    lesClassifications = classification.descriptionClassification + ", " + lesClassifications;
+                }
+
+                <p>@lesClassifications</p>
+            }
+        </dd>
+
+        <dt>
+            THEME(S)
+        </dt>
+
+        <dd>
+            @{
+
+                string lesThemes = "";
+
+                foreach (var theme in Model.tblThemes)
+                {
+                    lesThemes = theme.descriptionTheme + ", "+lesThemes;
+                }
+
+                <p>@lesThemes</p>
+            }
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idJeu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
