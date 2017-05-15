@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TexcelASPNETbyEddy.tblJeu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            NOM
+        </th>
+        <th>
+           DEVELLOPEUR
+        </th>
+        <th>
+           DESCRIPTION 
+        </th>
+        <th>
+           CONFIGURATION MINIMALE
+        </th>
+
+        <th>
+           GENRE
+        </th>
+        <!--<th>
+           Html.DisplayNameFor(model => model.tag)
+        </th>-->
+        <!--<th>
+            Html.DisplayNameFor(model => model.tblProjetTest.nomProjetTest)
+        </th>-->
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomJeu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.devellopeurJeu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descriptionJeu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.configurationMinimaleJeu)
+        </td>
+
+        <td>
+            @foreach (var genres in item.tblGenres)
+            {
+                <p> @Html.DisplayFor(modelItem => genres.descriptionGenre)</p>
+            }
+        </td>
+        
+       
+        <!--<td>
+            Html.DisplayFor(modelItem => item.tag)
+        </td>-->
+        <!--<td>
+            Html.DisplayFor(modelItem => item.tblProjetTest.nomProjetTest)
+        </td>-->
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idJeu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idJeu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idJeu })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,60 @@
+﻿@model TexcelASPNETbyEddy.tblGerant
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            @using (Html.BeginForm("Index", "Gerant"))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Connectez-vous</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.loginGerant,"Nom utilisateur", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.loginGerant, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.loginGerant, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="form-group" style="margin-top:2%;">
+                    @Html.LabelFor(m => m.motDePasseGerant, "Mot de passe", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.motDePasseGerant, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.motDePasseGerant, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="form-group" style="margin-top:2%;">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Connexion" class="btn btn-default" />
+                    </div>
+                </div>
+
+                if (ViewBag.ErrorLogin == true)
+                {
+                    <p class="col-md-offset-2 col-md-10" style="color:red;">User or password are wrong!!!!</p>
+                }
+
+            }
+        </section>
+    </div>
+
+</div>
+
+
+
+
+
+
+
