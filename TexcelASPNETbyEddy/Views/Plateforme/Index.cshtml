@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<TexcelASPNETbyEddy.tblPlateforme>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Plateformes";
 }
 
 
-<h2>Plateforme</h2>
+<h2>Plateformes</h2>
 
 <div class="row">
 
@@ -13,7 +13,7 @@
         @if (Session["Role"].ToString() == "administrateur")
         {
             <p>
-                @Html.ActionLink("Créer nouveau", "Create")
+                @Html.ActionLink("Créer nouvelle", "Create")
             </p>
         }   
     </div>

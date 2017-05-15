@@ -3,7 +3,7 @@
     
     <ul class="nav navbar-nav navbar-right">
         <li style="margin-top:15px;">
-            Bonjour @Session["NomPrenom"]
+            Bonjour @Session["NomPrenom"] (@Session["Role"])
         </li>
         <li>@Html.ActionLink("Se déconnecter", "Index", "Gerant", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
     </ul>
