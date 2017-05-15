@@ -97,15 +97,12 @@ namespace TexcelASPNETbyEddy.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(JeuViewModel j)
         {
-            if(ModelState.IsValid)
-            {
-                tblJeu jeu = bd.tblJeus.Find(j.idJeu);
-                /*jeu.devellopeurJeu = j.devellopeurJeu;
+            
+                /*tblJeu jeu = bd.tblJeus.Find(j.idJeu);
+                jeu.devellopeurJeu = j.devellopeurJeu;
                 jeu.descriptionJeu = j.descriptionJeu;
                 jeu.configurationMinimaleJeu = j.configurationMinimaleJeu;
-                jeu.nomJeu = j.nomJeu;*/
-
-                
+                jeu.nomJ0eu = j.nomJeu;
 
                 foreach (tblClassification cl in bd.tblClassifications)
                 {
@@ -201,14 +198,61 @@ namespace TexcelASPNETbyEddy.Controllers
                     }
                 }*/
 
-                //bd.Entry(jeu).State = System.Data.Entity.EntityState.Modified;
-                bd.SaveChanges();
+                //bd.Entry(jeu).State = System.Data.Entity.EntityState.Modified;*/
+                try
+                {
+                    tblJeu jeu = bd.tblJeus.Find(j.idJeu);
 
-                return RedirectToAction("Index");
+                    jeu.devellopeurJeu = j.devellopeurJeu;
+                    jeu.descriptionJeu = j.descriptionJeu;
+                    jeu.configurationMinimaleJeu = j.configurationMinimaleJeu;
+                    jeu.nomJeu = j.nomJeu;
 
-            }
+                    jeu.tag = jeu.nomJeu + jeu.configurationMinimaleJeu+jeu.descriptionJeu+jeu.devellopeurJeu;
 
-            return View(j);
+                     bd.Entry(jeu).State = System.Data.Entity.EntityState.Modified;
+
+                    bd.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(j);
+                }  
+        }
+
+        public ActionResult Create()
+        {   
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(tblJeu jeu)
+        {
+            jeu.tag = jeu.nomJeu + jeu.configurationMinimaleJeu + jeu.descriptionJeu + jeu.devellopeurJeu;
+
+/* tblGenre newGenre = new tblGenre();
+            newGenre.descriptionGenre = "Course";
+            newGenre.idGenre = 1;
+
+            tblClassification newClassification = new tblClassification();
+            newClassification.descriptionClassification = "Classification1";
+            newClassification.idClassification = 1;
+
+            tblTheme newTheme = new tblTheme();
+            newTheme.idTheme = 1;
+            newTheme.descriptionTheme = "";*/
+
+            jeu.tblThemes.Add(bd.tblThemes.Find(1));
+            jeu.tblClassifications.Add(bd.tblClassifications.Find(1));
+            jeu.tblGenres.Add(bd.tblGenres.Find(1));
+
+            //jeu.tblGenres.Add(newGenre);
+
+            bd.tblJeus.Add(jeu);
+            bd.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 

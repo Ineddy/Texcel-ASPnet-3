@@ -390,6 +390,7 @@
     <Content Include="Views\Jeu\Details.cshtml" />
     <Content Include="Views\Jeu\Edit.cshtml" />
     <Content Include="Views\Gerant\Index.cshtml" />
+    <Content Include="Views\Jeu\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
